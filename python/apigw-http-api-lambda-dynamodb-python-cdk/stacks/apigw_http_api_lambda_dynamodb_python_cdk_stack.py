@@ -125,17 +125,6 @@ class ApigwHttpApiLambdaDynamodbPythonCdkStack(Stack):
             "Endpoint",
             handler=api_hanlder,
             deploy_options=apigw_.StageOptions(
-                access_log_destination=apigw_.LogGroupLogDestination(api_log_group),
-                access_log_format=apigw_.AccessLogFormat.json_with_standard_fields(
-                    caller=True,
-                    http_method=True,
-                    ip=True,
-                    protocol=True,
-                    request_time=True,
-                    resource_path=True,
-                    response_length=True,
-                    status=True,
-                    user=True,
-                ),
+                tracing_enabled=True,
             ),
         )
